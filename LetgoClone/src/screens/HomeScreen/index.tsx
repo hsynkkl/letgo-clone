@@ -1,22 +1,25 @@
-import React from "react";
-import { View, Text, ScrollView } from "react-native";
-import styles from "./styles";
-import { AntDesign } from "@expo/vector-icons";
+import React, { useEffect, useState } from "react";
+import { ScrollView } from "react-native";
+
+import productsAssets from "../../../assets/products";
+import { Product } from "../../models";
+import MessageNotification from "../../components/MessageNotification";
+import CategoryFilter from "../../components/CategoryFilter";
+import FavoriteProducts from "../../components/FavoriteProducts";
+import MainProducts from "../../components/MainProducts";
 function index() {
+  const [products, setProducts] = useState<Product[]>([]);
+  useEffect(() => {
+    setProducts(productsAssets);
+  }, []);
+
   return (
-    <View style={styles.container}>
-      {/*Render header */}
-      <View style={styles.titleProduct}>
-        <Text style={styles.topicTitle}>Vitrin İlanları</Text>
-        <View style={styles.detailContainer}>
-          <Text style={styles.detailTitle}>Hepsini gör</Text>
-          <AntDesign name="right" size={20} color="#f24e61" />
-        </View>
-      </View>
-      <ScrollView bounces={true} horizontal={true}>
-        <Text>hsyn</Text>
-      </ScrollView>
-    </View>
+    <ScrollView style={{ backgroundColor: "white", height: "100%" }}>
+      <MessageNotification />
+      <CategoryFilter />
+      <FavoriteProducts />
+      <MainProducts mainProduct={products} />
+    </ScrollView>
   );
 }
 

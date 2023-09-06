@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     marginBottom: 12,
+    marginRight: "4%",
   },
   topicTitle: {
     fontWeight: "bold",
