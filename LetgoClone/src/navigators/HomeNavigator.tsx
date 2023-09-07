@@ -10,6 +10,8 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import CategoryFilterScreen from "../screens/CategoryFilterScreen";
+import ProductDetailScreen from "../screens/CategoryFilterScreen";
+
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 const Stack = createStackNavigator();
@@ -87,6 +89,11 @@ function HomeNavigator() {
         name="Home"
         component={HomeScreen}
         options={{ header: () => <MainHeaderComponent /> }}
+      />
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetailScreen}
+        options={{ header: () => <CategoryHeaderComponent /> }}
       />
       <Stack.Screen
         name="CategoryFiltering"

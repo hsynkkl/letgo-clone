@@ -23,7 +23,9 @@ function index() {
       {categories.map((item: Category) => {
         return (
           <TouchableOpacity
-            onPress={() => navigation.navigate("CategoryFiltering")}
+            onPress={() =>
+              navigation.navigate("CategoryFiltering", { category: item })
+            }
             style={styles.center}
           >
             <Image source={item.src} style={styles.image} />
