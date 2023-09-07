@@ -8,12 +8,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
+  topicTitleFiltered: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
   titleProduct: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
-    marginBottom: 10,
+    marginBottom: 15,
   },
   detailTitle: {
     fontWeight: "bold",

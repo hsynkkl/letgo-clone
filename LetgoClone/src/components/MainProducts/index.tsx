@@ -6,16 +6,22 @@ import { AntDesign } from "@expo/vector-icons";
 import FavoriteProductItem from "../FavoriteProductItem";
 type mainProductProps = {
   mainProduct: Product[];
+  header: string;
+  filtered: boolean;
 };
-function index({ mainProduct }: mainProductProps) {
+function index({ mainProduct, header, filtered }: mainProductProps) {
   return (
     <View style={styles.productsContainer}>
       <View style={styles.titleProduct}>
-        <Text style={styles.topicTitle}>Pendik</Text>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text style={styles.detailTitle}>Düzelt</Text>
-          <AntDesign name="right" size={18} color="#f24e61" />
-        </View>
+        <Text style={!filtered ? styles.topicTitleFiltered : styles.topicTitle}>
+          {header}
+        </Text>
+        {filtered && (
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Text style={styles.detailTitle}>Düzelt</Text>
+            <AntDesign name="right" size={18} color="#f24e61" />
+          </View>
+        )}
       </View>
       <View style={styles.listContainer}>
         {mainProduct.map((item) => {
