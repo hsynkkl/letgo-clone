@@ -10,9 +10,9 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import CategoryFilterScreen from "../screens/CategoryFilterScreen";
-import ProductDetailScreen from "../screens/CategoryFilterScreen";
+import ProductDetailScreen from "../screens/ProductDetailScreen";
 
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons, Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 const Stack = createStackNavigator();
 const MainHeaderComponent = () => {
@@ -93,7 +93,52 @@ function HomeNavigator() {
       <Stack.Screen
         name="ProductDetails"
         component={ProductDetailScreen}
-        options={{ header: () => <CategoryHeaderComponent /> }}
+        options={{
+          headerTitleAlign: "center",
+          headerTitle: () => null,
+          headerTransparent: true,
+          headerRight: () => {
+            return (
+              <View
+                style={{
+                  backgroundColor: "rgba(0,0,0,0.5)",
+                  height: 36,
+                  width: 36,
+                  borderRadius: 18,
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginRight: 20,
+                }}
+              >
+                <Ionicons
+                  name={"ios-arrow-redo-sharp"}
+                  size={24}
+                  color={"#FEFDFC"}
+                  style={{ marginRight: -2 }}
+                />
+              </View>
+            );
+          },
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "rgba(0,0,0,0.5)",
+                  height: 36,
+                  width: 36,
+                  borderRadius: 18,
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginLeft: 20,
+                }}
+              >
+                <Entypo name={"cross"} size={24} color={"#fefdfc"} />
+              </TouchableOpacity>
+            );
+          },
+        }}
       />
       <Stack.Screen
         name="CategoryFiltering"
