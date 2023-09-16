@@ -12,7 +12,14 @@ export declare class Product {
   readonly category: number;
   readonly countInStock: number;
 }
-
+export declare class Message {
+  readonly id: number;
+  readonly image: string;
+  readonly productName: string;
+  readonly sellerName: string;
+  readonly situation: string;
+  readonly date: string;
+}
 export declare class Category {
   readonly id: string;
   readonly name: string;

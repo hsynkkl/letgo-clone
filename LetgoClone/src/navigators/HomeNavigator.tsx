@@ -13,7 +13,10 @@ import CategoryFilterScreen from "../screens/CategoryFilterScreen";
 import ProductDetailScreen from "../screens/ProductDetailScreen";
 
 import { FontAwesome5, Ionicons, Entypo } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import {
+  useNavigation,
+  getFocusedRouteNameFromRoute,
+} from "@react-navigation/native";
 const Stack = createStackNavigator();
 const MainHeaderComponent = () => {
   return (
@@ -49,6 +52,7 @@ const MainHeaderComponent = () => {
     </SafeAreaView>
   );
 };
+
 const CategoryHeaderComponent = () => {
   const navigation = useNavigation();
 
@@ -82,7 +86,17 @@ const CategoryHeaderComponent = () => {
     </SafeAreaView>
   );
 };
-function HomeNavigator() {
+function MyStack({ navigation, route }) {
+  const tabHiddenRoutes = ["ProductDetails"];
+  React.useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (tabHiddenRoutes.includes(routeName)) {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      navigation.setOptions({ tabBarStyle: { display: "true" } });
+    }
+  }, [navigation, route]);
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -133,6 +147,7 @@ function HomeNavigator() {
                   alignItems: "center",
                   marginLeft: 20,
                 }}
+                onPress={() => navigation.goBack()}
               >
                 <Entypo name={"cross"} size={24} color={"#fefdfc"} />
               </TouchableOpacity>
@@ -149,4 +164,6 @@ function HomeNavigator() {
   );
 }
 
-export default HomeNavigator;
+export default function HomeNavigator({ navigation, route }) {
+  return <MyStack navigation={navigation} route={route} />;
+}
