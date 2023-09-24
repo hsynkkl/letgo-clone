@@ -11,6 +11,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import CategoryFilterScreen from "../screens/CategoryFilterScreen";
 import ProductDetailScreen from "../screens/ProductDetailScreen";
+import { Auth } from "aws-amplify";
 
 import { FontAwesome5, Ionicons, Entypo } from "@expo/vector-icons";
 import {
@@ -18,6 +19,9 @@ import {
   getFocusedRouteNameFromRoute,
 } from "@react-navigation/native";
 const Stack = createStackNavigator();
+const onLogout = () => {
+  Auth.signOut();
+};
 const MainHeaderComponent = () => {
   return (
     <SafeAreaView
@@ -30,7 +34,7 @@ const MainHeaderComponent = () => {
         marginBottom: 10,
       }}
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onLogout}>
         <Image
           source={require("../../assets/hsynkkl.png")}
           style={{ width: 38, height: 38, borderRadius: 20 }}

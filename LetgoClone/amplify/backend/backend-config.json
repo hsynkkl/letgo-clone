@@ -1,4 +1,24 @@
 {
+  "api": {
+    "letgoclone": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-09-23T21:46:46.875Z",
+              "apiKeyExpirationDays": 365,
+              "description": "hsynkkl"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
     "letgoclone85e67b03": {
       "customAuth": false,
