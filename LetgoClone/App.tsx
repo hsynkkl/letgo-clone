@@ -6,6 +6,7 @@ import RootNavigator from "./src/navigators/RootNavigator";
 import { Amplify } from "aws-amplify";
 import awsExports from "./src/aws-exports";
 import { withAuthenticator } from "aws-amplify-react-native";
+import "@azure/core-asynciterator-polyfill";
 Amplify.configure(awsExports);
 LogBox.ignoreAllLogs();
 function App() {

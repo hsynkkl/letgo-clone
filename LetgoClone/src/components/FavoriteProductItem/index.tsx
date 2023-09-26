@@ -15,7 +15,7 @@ function index({ product, prodType }: productProps) {
     <View>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("ProductDetails", { product: product });
+          navigation.navigate("ProductDetails", { id: product.id });
         }}
         style={prodType === "favorite" ? styles.favorite : styles.main}
       >

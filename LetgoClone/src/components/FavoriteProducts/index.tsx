@@ -5,7 +5,10 @@ import { AntDesign } from "@expo/vector-icons";
 import productsAssets from "../../../assets/products";
 import { Product } from "../../models";
 import FavoriteProductItem from "../FavoriteProductItem";
-function index() {
+type FavoriteProductType = {
+  productArray: Product[];
+};
+function index({ productArray }: FavoriteProductType) {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     setProducts(productsAssets);
@@ -26,7 +29,7 @@ function index() {
         bounces={true}
         horizontal={true}
       >
-        {products.map((item) => {
+        {productArray.map((item) => {
           return (
             <FavoriteProductItem
               prodType="favorite"

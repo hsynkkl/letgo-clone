@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, ScrollView, ActivityIndicator } from "react-native";
 import { Product } from "../../models";
 import ImageCarousel from "../../components/ImageCarousel";
 import DetailsTextBox from "../../components/DetailsTextBox";
@@ -7,9 +7,23 @@ import SellerProfile from "../../components/SellerProfile";
 import SocialMedias from "../../components/SocialMedias";
 import MappingComponent from "../../components/MappingComponent";
 import MessageBox from "../../components/MessageBox";
-function index(props) {
-  const [product, setProduct] = useState<Product>(props.route.params.product);
+import { DataStore } from "aws-amplify";
 
+function index(props) {
+  const [product, setProduct] = useState<Product>();
+  useEffect(() => {
+    if (!props.route.params?.id) {
+      return;
+    }
+    const fetchProducts = async () => {
+      const result = await DataStore.query(Product, props.route.params.id);
+      setProduct(result);
+    };
+    fetchProducts();
+  }, [props.route.params.id]);
+  if (!product) {
+    return <ActivityIndicator />;
+  }
   return (
     <View style={{ flex: 1 }}>
       <ScrollView
